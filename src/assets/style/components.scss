@@ -1,2 +1,5 @@
 /*contains style for each component */
- 
+.app{
+    color: $primary;
+  @include titleText()
+}

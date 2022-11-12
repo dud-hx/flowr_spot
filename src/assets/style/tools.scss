@@ -1,1 +1,76 @@
 /*contains global functions and mixins*/
+
+//font faces
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+}
+
+
+@mixin fontMixin($font-face, $font-size, $font-weight, $line-height) {
+    font-family: $font-face;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+    font-style: normal
+}
+
+@mixin titleText() {
+    @include fontMixin("Montserrat", $title, 700, 54px)
+}
+
+@mixin h1Text() {
+    @include fontMixin("Montserrat", $h1, 600, 39px)
+}
+
+@mixin h2Text() {
+    @include fontMixin("Montserrat", $h2, 500, 29px)
+}
+
+@mixin h3Text() {
+    @include fontMixin("Montserrat", $h3, 500, 22px)
+}
+
+@mixin subHeadlineText() {
+    @include fontMixin("Montserrat", $subheadline, 500, 20px)
+}
+
+@mixin contentText() {
+    @include fontMixin("Montserrat", $content, 500, 17px)
+}
+
+@mixin smallestContentText() {
+    @include fontMixin("Montserrat", $caption, 500, 15px)
+}
+
+@mixin paragraphText() {
+    @include fontMixin("Montserrat", $content, 500, 17px);
+    letter-spacing: 0.075rem;
+}
+
+/*smaller than the normal paragraph*/
+@mixin paragraph1Text() {
+    @include smallestContentText();
+    letter-spacing: 0.075rem;
+}
+
+@mixin buttonText() {
+    @include paragraph1Text();
+    text-transform: uppercase;
+}
+
+@mixin linkText() {
+    @include paragraphText();
+    text-decoration: underline;
+}
+
+@mixin captionText() {
+    @include paragraph1Text();
+    color: $lightdark;
+}
