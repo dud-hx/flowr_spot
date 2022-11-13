@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HomeScreen = () => {
+const HomeScreen: React.FC<{}> = () => {
   return (
     <div>HomeScreen</div>
   )

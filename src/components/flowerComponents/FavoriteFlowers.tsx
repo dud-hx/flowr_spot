@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FavoriteFlowers = () => {
+const FavoriteFlowers : React.FC<{}> = () => {
   return (
     <div>FavoriteFlowers</div>
   )
