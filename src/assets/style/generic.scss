@@ -27,3 +27,9 @@
     }
   }
 }
+
+.MuiTypography-root {
+  &.typography__overwrite {
+    @include h3Text()
+  }
+}

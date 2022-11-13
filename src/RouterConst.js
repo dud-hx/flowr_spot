@@ -15,7 +15,7 @@ export const routeItems = [{
     text: 'Login'
 }, {
     path: '/signup',
-    text: 'Signup'
+    text: 'New account'
 }];
 
  
