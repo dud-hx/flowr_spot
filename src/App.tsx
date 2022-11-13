@@ -6,7 +6,7 @@ import Signup from "./components/authenticationComponents/Signup";
 import FavoriteFlowers from "./components/flowerComponents/FavoriteFlowers";
 import FlowerList from "./components/flowerComponents/FlowerList";
 import HomeScreen from "./components/HomeScreen";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/navigation/Navigation";
 import SightingList from "./components/sightingsComponents/SightingList";
 
 const App: React.FC<{}> = () => {

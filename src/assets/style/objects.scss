@@ -1,1 +1,44 @@
 /*contains styles for  containers, wrappers and layout systems*/
+
+.MuiButton-root {
+    &.button__signup {
+        width: 140px;
+        background: linear-gradient(270deg, $lightpink 0%, $lightpink2 100%);
+        box-shadow: 0px 15px 20px rgba(234, 168, 159, 0.2);
+        border-radius: 50px;
+        color: $white
+    }
+
+    &.primary {
+        background: $primary;
+        border-radius: 3px;
+    }
+
+    &.secondary {
+        background: $primaryfaded;
+        border-radius: 3px;
+        border: 1px solid $primary;
+    }
+
+    &.lotus {
+        background: linear-gradient(270deg, $lightpink 0%, $lightpink2 100%);
+        box-shadow: 0px 15px 20px rgba(234, 168, 159, 0.2);
+        border-radius: 3px;
+    }
+
+    &.white {
+        background: $white;
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+    }
+
+    &.bordered {
+        background: $white;
+        mix-blend-mode: normal;
+        opacity: 0.2;
+        border: 1px solid $borderlightred;
+        box-shadow: 0px 15px 30px $borderlightred;
+        border-radius: 3px;
+    }
+
+}

@@ -4,14 +4,23 @@
   &.appbar--style {
     background-color: $white;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
-    .menu{
-      .MuiButton-root {
+
+    .menu {
+      li {
         color: $lightdark;
         @include contentText();
         text-transform: capitalize;
-        margin-right: $spacing-m;
-        a{
+        margin-right: $spacing-xs;
+        width: fit-content;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        a {
           text-decoration: none;
+
+          .text__color {
+            color: $error
+          }
         }
       }
 

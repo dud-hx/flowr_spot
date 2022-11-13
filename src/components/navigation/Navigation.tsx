@@ -7,15 +7,19 @@ import {
   Button,
   Container,
   IconButton,
+  List,
+  ListItem,
   Menu,
   MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
-import logo from "../assets/media/logo.svg";
+import logo from "../../assets/media/logo.svg";
 import { Link } from "react-router-dom";
-import { routeItems } from "../RouterConst";
- 
+import { routeItems } from "../../RouterConst";
+import StyledButton from "../../shared/StyledButton";
+import MenuList, { Items } from "./MenuList";
+
 const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -91,16 +95,11 @@ const Navigation = () => {
             className="menu"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            {routeItems.map((item: any) => (
-              <Button
-              key={item.path}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <Link to={item.path}>{item.text}</Link>
-              </Button>
-            ))}
- 
+            <List sx={{ display: "inline-flex"}}>
+              {routeItems.map((item: any) => (
+                <MenuList path={item.path}  text={item.text}/>
+              ))}
+            </List>
           </Box>
           <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
