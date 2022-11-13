@@ -7,10 +7,12 @@ interface customButtonProps extends ButtonProps{
 }
 
 const StyledButton = (props: customButtonProps) => {
-    const { text, buttonVariant, onClick} = props
+    const { text, buttonVariant, onClick,className} = props
 
     return (
-        <Button   onClick={onClick} {...props} >
+        <Button sx={{ textTransform: 'capitalize'}} 
+        className={`${className} ${buttonVariant}`}
+         onClick={onClick} {...props} >
             <Typography>{text}</Typography>
         </Button>
     )

@@ -2,6 +2,7 @@ import { Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 import InputField from "../../shared/InputField";
 import ModalComponent, { modalProps } from "../../shared/ModalComponent";
+import StyledButton from "../../shared/StyledButton";
 const register = {
   email: "string",
   password: "string",
@@ -13,6 +14,9 @@ const register = {
 const Signup = (props: any) => {
   const handleChange = () => {
     console.log("handleChange");
+  };
+  const handleOnClick = () => {
+    console.log("handleOnClick");
   };
   return (
     <ModalComponent title='Create an Account' open={props.open} handleClose={props.handleClose}>
@@ -61,6 +65,14 @@ const Signup = (props: any) => {
             handleChange={handleChange}
             fullWidth={true}
           />
+        </Grid>
+        <Grid item xs={12}>
+          <StyledButton
+            text="Create an account"
+            buttonVariant="lotus"
+            onClick={handleOnClick}
+            fullWidth
+           />
         </Grid>
       </Grid>
     </ModalComponent>

@@ -25,6 +25,8 @@
         background: linear-gradient(270deg, $lightpink 0%, $lightpink2 100%);
         box-shadow: 0px 15px 20px rgba(234, 168, 159, 0.2);
         border-radius: 3px;
+        color: $white;
+        text-transform: capitalize;
     }
 
     &.white {
