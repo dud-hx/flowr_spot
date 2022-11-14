@@ -2,7 +2,7 @@ import { Button, ButtonProps, Typography } from '@mui/material'
 interface customButtonProps extends ButtonProps{
     text?: string;
     buttonVariant?: 'lotus' | 'white' | 'bordered' | 'primary' | 'secondary' ;
-    onClick?: () => void;
+    onClick?: (e: any) => void;
 
 }
 

@@ -4,22 +4,23 @@ import {
   AppBar,
   Avatar,
   Box,
-  Button,
   Container,
   IconButton,
   List,
-  ListItem,
   Menu,
   MenuItem,
   Toolbar,
   Typography,
 } from "@mui/material";
 import logo from "../../assets/media/logo.svg";
-import { Link } from "react-router-dom";
 import { routeItems } from "../../RouterConst";
-import StyledButton from "../../shared/StyledButton";
-import MenuList, { Items } from "./MenuList";
-
+import MenuList from "./MenuList";
+import { inject, observer } from "mobx-react";
+import StateStore from "../../state/stateStore";
+interface ISignupProps {
+  StateStore?: StateStore
+ 
+}
 const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -112,4 +113,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default inject('StateStore')(observer(Navigation));

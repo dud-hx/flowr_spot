@@ -1,24 +1,39 @@
 import { Button, colors, ListItem, Typography } from "@mui/material";
-import React from "react";
+import { inject, observer } from "mobx-react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ModalComponent from "../../shared/ModalComponent";
 import StyledButton from "../../shared/StyledButton";
+import StateStore from "../../state/stateStore";
 import Login from "../authenticationComponents/Login";
 import Signup from "../authenticationComponents/Signup";
-export interface Items {
+export interface IItemsProps{
   path: string;
   text: string;
+  StateStore?:StateStore;
 }
 
-const MenuList = ({ path, text }: Items) => {
+const MenuList: React.FC<IItemsProps> = props => {
+  const { path, text, StateStore } = props;
+
+  
   const [openSignup, setOpenSignUp] = React.useState(false);
   const [openLogin, setOpenLogin] = React.useState(false);
 
   const isLogin = path === "/login" ? "text__color" : "";
   const isSignUp = path === "/signup";
-  const handleOnClick = () => {
-    isSignUp ? setOpenSignUp(prevState => !prevState) :
-    setOpenLogin(nextState => !nextState);
+  useEffect(() => {
+    if(StateStore?.values.isRegistered){
+      setOpenSignUp(false)
+      setOpenLogin(true)
+    }
+      
+  }, [StateStore?.values.isRegistered])
+  
+  const handleSignupClick = () => {
+     setOpenSignUp(prevState => !prevState) 
+   }
+  const handleLogin = () => {
+     setOpenLogin(nextState => !nextState);
   }
   const ListElement = () => {
     if (!isSignUp && !isLogin) {
@@ -27,7 +42,7 @@ const MenuList = ({ path, text }: Items) => {
     } else {
       return <StyledButton
         text={text}
-        onClick={handleOnClick}
+        onClick={isSignUp ? handleSignupClick : handleLogin}
         className={isSignUp ? "button__signup" : ''}
         sx={{ textTransform: 'capitalize', color: { isLogin } }} />
     }
@@ -39,10 +54,10 @@ const MenuList = ({ path, text }: Items) => {
         <ListElement />
 
       </ListItem>
-      <Signup open={openSignup} handleClose={handleOnClick} />
-      <Login open={openLogin} handleClose={handleOnClick} />
+      <Signup open={openSignup} handleClose={handleSignupClick} />
+      <Login open={openLogin} handleClose={handleLogin} />
     </>
   );
 };
 
-export default MenuList;
+export default inject('StateStore')(observer(MenuList));

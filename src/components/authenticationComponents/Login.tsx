@@ -1,20 +1,35 @@
 import { Grid, Modal } from "@mui/material";
-import React from "react";
+import { inject, observer } from "mobx-react";
+import React , {useState} from "react";
 import InputField from "../../shared/InputField";
 import ModalComponent from "../../shared/ModalComponent";
 import StyledButton from "../../shared/StyledButton";
+import StateStore, { login } from "../../state/stateStore";
+interface ILoginProps {
+  StateStore?: StateStore
+  open?: boolean,
+  handleClose?: () => void
+}
 
-const Login = (props: any) => {
-  const handleChange = () => {
-    console.log("handleChange");
-  };
-  const handleOnClick = () => {
-    console.log("handleOnClick");
-  };
+const Login: React.FC<ILoginProps> = props => {
+   const [user, setUser] = useState<login>()
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({
+     ...user!,
+     [e.target.id]: e.target.value
+   })
+
+ };
+  const handleOnClick = (e: any) => {
+    props.StateStore?.setLogin(user!)
+ };
+ const modalOpen = props.open ? props.open : false
+
   return (
     <ModalComponent
-      open={props.open}
-      handleClose={props.handleClose}
+      open={modalOpen}
+      handleClose={props?.handleClose!}
       title="Welcome Back"
     >
       <Grid container spacing={1}>
@@ -22,16 +37,18 @@ const Login = (props: any) => {
           <InputField
             label="Email"
             type="text"
-            value="inat@emmail"
+            value={user?.email!}
             handleChange={handleChange}
             fullWidth={true}
+            id="email"	
           />
         </Grid>
         <Grid item xs={12}>
           <InputField
+          id="password"
             label="Password"
             type="password"
-            value="1996"
+            value={user?.password!}
             handleChange={handleChange}
             fullWidth={true}
           />
@@ -48,5 +65,5 @@ const Login = (props: any) => {
     </ModalComponent>
   );
 };
-
-export default Login;
+export default inject("StateStore")(observer(Login));
+ 

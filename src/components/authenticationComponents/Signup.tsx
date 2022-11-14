@@ -1,82 +1,101 @@
-import { Grid, TextField, Typography } from "@mui/material";
-import React from "react";
+import { Grid } from "@mui/material";
+import { useState } from "react";
 import InputField from "../../shared/InputField";
-import ModalComponent, { modalProps } from "../../shared/ModalComponent";
+import ModalComponent from "../../shared/ModalComponent";
 import StyledButton from "../../shared/StyledButton";
-const register = {
-  email: "string",
-  password: "string",
-  first_name: "string",
-  last_name: "string",
-  date_of_birth: "string",
-};
+import StateStore from "../../state/stateStore";
+import { user } from "../../models/userModel"
+import { AnyAaaaRecord } from "dns";
+import { inject, observer } from "mobx-react";
+import { ContactSupport } from "@mui/icons-material";
+interface ISignupProps {
+  StateStore?: StateStore
+  open?: boolean,
+  handleClose?: () => void
+}
 
-const Signup = (props: any) => {
-  const handleChange = () => {
-    console.log("handleChange");
+const Signup: React.FC<ISignupProps> = props => {
+  const [userAccount, setUserAccount] = useState<user>()
+ 
+  
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     setUserAccount({
+      ...userAccount!,
+      [e.target.id]: e.target.value
+    })
+
   };
-  const handleOnClick = () => {
-    console.log("handleOnClick");
+   const handleOnClick = (e: any) => {
+     props.StateStore?.setNewAccount(userAccount!)
   };
+
+  const modalOpen = props.open ? props.open : false
+
   return (
-    <ModalComponent title='Create an Account' open={props.open} handleClose={props.handleClose}>
+    <ModalComponent title='Create an Account' open={modalOpen} handleClose={props?.handleClose!}>
+         <Grid container>
+          <Grid item xs={6}>
+            <InputField
+              label="First Name"
+              type="text"
+              value={userAccount?.first_name!}
+              handleChange={handleChange}
+              id='first_name'
+            /> </Grid>
+          <Grid item xs={6}>
 
-      <Grid container>
-        <Grid item xs={6}>
-          <InputField
-            label="First Name"
-            type="text"
-            value="Ina"
-            handleChange={handleChange}
-          /> </Grid>
-        <Grid item xs={6}>
+            <InputField
+              label="Last Name"
+              type="text"
+              value={userAccount?.last_name!}
+              handleChange={handleChange}
+              id='last_name'
 
-          <InputField
-            label="Last Name"
-            type="text"
-            value="Hoxhaj"
-            handleChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputField
+              label="Date of birth"
+              type="date"
+              value={userAccount?.date_of_birth!}
+              handleChange={handleChange}
+              fullWidth={true}
+              id='date_of_birth'
 
-          />
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputField
+              label="Email"
+              type="text"
+              value={userAccount?.email!}
+              handleChange={handleChange}
+              fullWidth={true}
+              id='email'
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InputField
+              label="Password"
+              type="password"
+              value={userAccount?.password!}
+              handleChange={handleChange}
+              fullWidth={true}
+              id='password'
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <StyledButton
+              text="Create an account"
+              buttonVariant="lotus"
+              onClick={handleOnClick}
+              fullWidth
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <InputField
-            label="Date of birth"
-            type="date"
-            value="24/08/1996"
-            handleChange={handleChange}
-            fullWidth={true}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <InputField
-            label="Email"
-            type="text"
-            value="inat@emmail"
-            handleChange={handleChange}
-            fullWidth={true}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <InputField
-            label="Password"
-            type="password"
-            value="1996"
-            handleChange={handleChange}
-            fullWidth={true}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <StyledButton
-            text="Create an account"
-            buttonVariant="lotus"
-            onClick={handleOnClick}
-            fullWidth
-           />
-        </Grid>
-      </Grid>
-    </ModalComponent>
+     </ModalComponent>
   );
 };
 
-export default Signup;
+export default inject("StateStore")(observer(Signup));
