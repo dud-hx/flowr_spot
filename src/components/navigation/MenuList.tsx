@@ -6,58 +6,68 @@ import StyledButton from "../../shared/StyledButton";
 import StateStore from "../../state/stateStore";
 import Login from "../authenticationComponents/Login";
 import Signup from "../authenticationComponents/Signup";
-export interface IItemsProps{
+export interface IItemsProps {
   path: string;
   text: string;
-  StateStore?:StateStore;
+  StateStore?: StateStore;
 }
 
-const MenuList: React.FC<IItemsProps> = props => {
+const MenuList: React.FC<IItemsProps> = (props) => {
   const { path, text, StateStore } = props;
 
-  
+  const val = StateStore?.values;
   const [openSignup, setOpenSignUp] = React.useState(false);
   const [openLogin, setOpenLogin] = React.useState(false);
 
-  const isLogin = path === "/login" ? "text__color" : "";
-  const isSignUp = path === "/signup";
-  useEffect(() => {
-    if(StateStore?.values.isRegistered){
-      setOpenSignUp(false)
-      setOpenLogin(true)
-    }
-      
-  }, [StateStore?.values.isRegistered])
-  
+  const isLoginPath = path === "/login" ? "text__color" : "";
+  const isSignupPath = path === "/signup";
+
   const handleSignupClick = () => {
-     setOpenSignUp(prevState => !prevState) 
-   }
-  const handleLogin = () => {
-     setOpenLogin(nextState => !nextState);
-  }
-  const ListElement = () => {
-    if (!isSignUp && !isLogin) {
-      return <Link to={path}>  <Typography>{text}  </Typography></Link>
-
-    } else {
-      return <StyledButton
-        text={text}
-        onClick={isSignUp ? handleSignupClick : handleLogin}
-        className={isSignUp ? "button__signup" : ''}
-        sx={{ textTransform: 'capitalize', color: { isLogin } }} />
+    if (val?.isRegistered) {
+      setOpenLogin(true);
     }
-
-  }
+    setOpenSignUp((prevState) => !prevState);
+  };
+  const handleLogin = () => {
+    setOpenLogin((nextState) => !nextState);
+  };
+  const handleProfile = () => {
+    handleLogin();
+    console.log("openProfile");
+  };
+  const ListElement = () => {
+    if (!isSignupPath && !isLoginPath) {
+      return (
+        <Link to={path}>
+          {" "}
+          <Typography>{text} </Typography>
+        </Link>
+      );
+    } else {
+        return (
+          <StyledButton
+            text={text}
+            onClick={isSignupPath ? handleSignupClick : handleLogin}
+            className={isSignupPath ? "button__signup" : ""}
+            sx={{ textTransform: "capitalize", color: { isLoginPath } }}
+          />
+        )
+      }
+     
+  };
   return (
     <>
       <ListItem key={path} sx={{ my: 2, textDecoration: "none" }}>
         <ListElement />
-
       </ListItem>
       <Signup open={openSignup} handleClose={handleSignupClick} />
-      <Login open={openLogin} handleClose={handleLogin} />
+      <Login
+        open={openLogin}
+        handleClose={handleLogin}
+        handleProfile={handleProfile}
+      />
     </>
   );
 };
 
-export default inject('StateStore')(observer(MenuList));
+export default inject("StateStore")(observer(MenuList));

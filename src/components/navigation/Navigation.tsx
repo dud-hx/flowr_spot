@@ -17,11 +17,10 @@ import { routeItems } from "../../RouterConst";
 import MenuList from "./MenuList";
 import { inject, observer } from "mobx-react";
 import StateStore from "../../state/stateStore";
-interface ISignupProps {
-  StateStore?: StateStore
- 
+interface INavigationProps {
+  StateStore?: StateStore;
 }
-const Navigation = () => {
+const Navigation: React.FC<INavigationProps> = (props) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -35,10 +34,10 @@ const Navigation = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const isLogged = props?.StateStore?.values?.isLogged;
+  const filteredArray = !isLogged
+    ? routeItems.filter((item) => item.path !== "/favorites")
+    : routeItems.filter(item=> item.path !== "/login"  && item.path !== "/signup");
 
   return (
     <AppBar position="static" className="appbar--style">
@@ -96,21 +95,23 @@ const Navigation = () => {
             className="menu"
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
-            <List sx={{ display: "inline-flex"}}>
-              {routeItems.map((item: any) => (
-                <MenuList path={item.path}  text={item.text}/>
+            <List sx={{ display: "inline-flex" }}>
+              {filteredArray.map((item: any) => (
+                <MenuList path={item.path} text={item.text} />
               ))}
             </List>
           </Box>
-          <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="" />
-            </IconButton>
-          </Box>
+          {isLogged ? (
+            <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="" />
+              </IconButton>
+            </Box>
+          ) : null}
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 
-export default inject('StateStore')(observer(Navigation));
+export default inject("StateStore")(observer(Navigation));
