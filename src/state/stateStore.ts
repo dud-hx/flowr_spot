@@ -1,9 +1,11 @@
+import { flowers } from './../models/flowerModel';
 import { user } from "./../models/userModel";
 import { observable, action, makeObservable, makeAutoObservable } from "mobx";
 import { Console } from "console";
 
 const url = "https://flowrspot-api.herokuapp.com";
-const baseURL = `${url}/api/v1/users`;
+const baseUserURL = `${url}/api/v1/users`;
+const baseFlowersURL =`${url}/api/v1/flowers`;
 export interface login {
   email: string;
   password: string;
@@ -15,10 +17,12 @@ class StateStore {
   }
   @observable values = {
     user: {},
+    flowers:{},
     error: "",
     isRegistered: false,
     isLogged: false,
   };
+ 
   async setAccount(formData: user | login, isLogin: boolean) {
     const requestOptions = {
       method: "POST",
@@ -26,7 +30,7 @@ class StateStore {
       body: JSON.stringify(formData),
     };
     const dynamicURL = isLogin ? "/login" : "/register";
-    const query = await fetch(`${baseURL}${dynamicURL}`, requestOptions);
+    const query = await fetch(`${baseUserURL}${dynamicURL}`, requestOptions);
     if (query) {
       const res = await query.json();
       if (!res.auth_token) {
@@ -39,13 +43,18 @@ class StateStore {
     }
   }
 
-  async login(formData: login) {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+ async getFlowerData(){
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
     };
+   const query = await fetch(`${baseFlowersURL}/random`, requestOptions);
+  if (query) {
+    const res = await query.json();
+    this.values.flowers = res
   }
+ 
+ }
   @action setNewAccount(item: user) {
     this.setAccount(item, false);
   }
