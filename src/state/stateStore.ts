@@ -17,7 +17,7 @@ class StateStore {
   }
   @observable values = {
     user: {},
-    flowers:{},
+    flowers:null,
     error: "",
     isRegistered: false,
     isLogged: false,
@@ -49,6 +49,18 @@ class StateStore {
     headers: { "Content-Type": "application/json" }
     };
    const query = await fetch(`${baseFlowersURL}/random`, requestOptions);
+  if (query) {
+    const res = await query.json();
+    this.values.flowers = res
+  } 
+ }
+
+ async searchFlower(val:string){
+  const requestOptions = {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
+    };
+   const query = await fetch(`${baseFlowersURL}/search?query=${val }`, requestOptions);
   if (query) {
     const res = await query.json();
     this.values.flowers = res

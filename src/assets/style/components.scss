@@ -1,8 +1,37 @@
 /*contains style for each component */
 //navigation
-.appbar{
-     .bgColor{
+.appbar {
+    .bgColor {
         background-color: $black;
     }
+
+}
+
+//HomeScreen
+.home_header {
+    width: 100%;
+    height: 50vh;
+    min-height: 500px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1435224668334-0f82ec57b605?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1,
+    p {
+        color: #fff;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    h1 {
+        @include h1Text()
+    }
+
+    p {
+        @include smallestContentText()
+    }
+
 
 }

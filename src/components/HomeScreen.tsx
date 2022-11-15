@@ -1,8 +1,11 @@
+import { Grid } from '@mui/material'
+import { flexbox } from '@mui/system'
 import { inject, observer } from 'mobx-react'
 import React, { useEffect } from 'react'
 import StateStore from '../state/stateStore'
 import FlowerList from './flowerComponents/FlowerList'
-interface IHomeProps {
+import SearchFlowers from '../components/flowerComponents/SearchFlowers'
+ interface IHomeProps {
   StateStore?: StateStore
 }
 const HomeScreen: React.FC<IHomeProps> = props => {
@@ -14,7 +17,12 @@ const HomeScreen: React.FC<IHomeProps> = props => {
 
   return (
     <>
-      <div>MainContent</div>
+      <div className="home_header">
+        <h1>Discover flowers around you</h1>
+        <p>Explore between more than 8.427 sightings</p>
+        <div style={{display: 'flex', justifyContent:'center' }}> <SearchFlowers /></div>
+      </div>
+
       <FlowerList />   </>
   )
 }
