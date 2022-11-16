@@ -5,6 +5,7 @@ import InputField from "../../shared/InputField";
 import ModalComponent from "../../shared/ModalComponent";
 import StyledButton from "../../shared/StyledButton";
 import StateStore, { login } from "../../state/stateStore";
+import Profile from "../userComponents/Profile";
 interface ILoginProps {
   StateStore?: StateStore
   open?: boolean,
@@ -15,6 +16,7 @@ interface ILoginProps {
 const Login: React.FC<ILoginProps> = props => {
   const { StateStore, open, handleClose, handleProfile } = props
   const [user, setUser] = useState<login>()
+  const [openUserProfile, setopenUserProfile] = React.useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({
@@ -91,7 +93,9 @@ const Login: React.FC<ILoginProps> = props => {
 
               />
             </Grid>
+
           </>
+
         }
       </Grid>
     </ModalComponent>

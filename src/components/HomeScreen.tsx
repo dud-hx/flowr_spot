@@ -11,7 +11,7 @@ import SearchFlowers from '../components/flowerComponents/SearchFlowers'
 const HomeScreen: React.FC<IHomeProps> = props => {
   const { StateStore } = props
   useEffect(() => {
-    StateStore?.getFlowerData()
+    StateStore?.getFlowerData();
   }, [])
   const store = StateStore?.values
 

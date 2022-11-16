@@ -4,7 +4,7 @@ import InputField from "../../shared/InputField";
 import ModalComponent from "../../shared/ModalComponent";
 import StyledButton from "../../shared/StyledButton";
 import StateStore from "../../state/stateStore";
-import { user } from "../../models/userModel";
+import { userModel } from "../../models/userModel";
 import { AnyAaaaRecord } from "dns";
 import { inject, observer } from "mobx-react";
 import { ContactSupport } from "@mui/icons-material";
@@ -16,7 +16,7 @@ interface ISignupProps {
 
 const Signup: React.FC<ISignupProps> = (props) => {
   const { StateStore, open, handleClose } = props;
-  const [userAccount, setUserAccount] = useState<user>();
+  const [userAccount, setUserAccount] = useState<userModel>();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserAccount({

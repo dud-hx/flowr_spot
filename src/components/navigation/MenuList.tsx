@@ -10,10 +10,11 @@ export interface IItemsProps {
   path: string;
   text: string;
   StateStore?: StateStore;
+  handleOpenUserMenu:() => void
 }
 
 const MenuList: React.FC<IItemsProps> = (props) => {
-  const { path, text, StateStore } = props;
+  const { path, text, StateStore,handleOpenUserMenu} = props;
 
   const val = StateStore?.values;
   const [openSignup, setOpenSignUp] = React.useState(false);
@@ -33,7 +34,7 @@ const MenuList: React.FC<IItemsProps> = (props) => {
   };
   const handleProfile = () => {
     handleLogin();
-    console.log("openProfile");
+    handleOpenUserMenu()
   };
   const ListElement = () => {
     if (!isSignupPath && !isLoginPath) {
@@ -66,6 +67,7 @@ const MenuList: React.FC<IItemsProps> = (props) => {
         handleClose={handleLogin}
         handleProfile={handleProfile}
       />
+ 
     </>
   );
 };

@@ -32,7 +32,7 @@ const FlowerList: React.FC<IPropsFlowerList | any> = (props) => {
 
 
             <div className="card" style={{ backgroundImage: `url(${item.profile_picture})` }}>
-             {StateStore.isLogged ? <IconButton className="icon">
+             {StateStore?.values.isLogged ? <IconButton className="icon">
                 <Star sx={{color:"#D4D8D9"}} />
               </IconButton>: null
 }

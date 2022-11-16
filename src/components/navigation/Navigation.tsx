@@ -17,18 +17,21 @@ import { routeItems } from "../../RouterConst";
 import MenuList from "./MenuList";
 import { inject, observer } from "mobx-react";
 import StateStore from "../../state/stateStore";
+import Profile from "../userComponents/Profile";
+import profileAvatar from "../../assets/media/profile.svg"
 interface INavigationProps {
   StateStore?: StateStore;
 }
 const Navigation: React.FC<INavigationProps> = (props) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [openUserProfile, setopenUserProfile] = React.useState(false);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
+  const handleOpenUserMenu = () => {
+     setopenUserProfile((prevState) => !prevState);
+  
   };
 
   const handleCloseNavMenu = () => {
@@ -97,19 +100,21 @@ const Navigation: React.FC<INavigationProps> = (props) => {
           >
             <List sx={{ display: "inline-flex" }}>
               {filteredArray.map((item: any) => (
-                <MenuList path={item.path} text={item.text} />
+                <MenuList path={item.path} text={item.text} handleOpenUserMenu={handleOpenUserMenu} />
               ))}
             </List>
           </Box>
           {isLogged ? (
             <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="" />
+                <Avatar alt="Remy Sharp" src={profileAvatar} />
               </IconButton>
             </Box>
           ) : null}
+          <Profile open={openUserProfile} handleClose={handleOpenUserMenu}/>
         </Toolbar>
       </Container>
+      
     </AppBar>
   );
 };

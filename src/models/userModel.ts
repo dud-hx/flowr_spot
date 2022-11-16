@@ -1,7 +1,7 @@
-export interface user {
-    email: "string";
-    password: "string";
-    first_name: "string";
-    last_name: "string";
-    date_of_birth: "string";
+export interface userModel {
+    email?: "string";
+    password?: "string";
+    first_name?: "string";
+    last_name?: "string";
+    date_of_birth?: "string";
   }
