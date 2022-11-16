@@ -80,6 +80,15 @@
       }
     }
   }
+  
+  .modal_content{
+    .MuiBackdrop-root{
+      background: $white;
+      box-shadow: none;
+      transform: translate(0%, 10%),
+
+    }
+  }
 }
 
 /* Small Devices, Tablets */

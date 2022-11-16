@@ -46,8 +46,8 @@ const Login: React.FC<ILoginProps> = props => {
                 type="text"
                 value={user?.email!}
                 handleChange={handleChange}
-                fullWidth={true}
-                id="email"
+                 id="email"
+                 width="49ch"
               />
             </Grid>
             <Grid item xs={12}>
@@ -56,9 +56,9 @@ const Login: React.FC<ILoginProps> = props => {
                 label="Password"
                 type="password"
                 value={user?.password!}
-                handleChange={handleChange}
-                fullWidth={true}
-              />
+                handleChange={handleChange} 
+                width="49ch"
+               />
             </Grid>
             <Grid item xs={12}  >
               <StyledButton

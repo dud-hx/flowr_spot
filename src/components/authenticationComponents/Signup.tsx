@@ -47,6 +47,8 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 value={userAccount?.first_name!}
                 handleChange={handleChange}
                 id="first_name"
+                width="24ch"
+
               />{" "}
             </Grid>
             <Grid item xs={6}>
@@ -56,6 +58,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 value={userAccount?.last_name!}
                 handleChange={handleChange}
                 id="last_name"
+                width="24ch"
               />
             </Grid>
             <Grid item xs={12}>
@@ -64,9 +67,10 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 type="date"
                 value={userAccount?.date_of_birth!}
                 handleChange={handleChange}
-                fullWidth={true}
+                width="49ch"
                 id="date_of_birth"
-              />
+                
+               />
             </Grid>
             <Grid item xs={12}>
               <InputField
@@ -74,7 +78,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 type="text"
                 value={userAccount?.email!}
                 handleChange={handleChange}
-                fullWidth={true}
+                width="49ch"
                 id="email"
               />
             </Grid>
@@ -84,7 +88,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 type="password"
                 value={userAccount?.password!}
                 handleChange={handleChange}
-                fullWidth={true}
+                width="49ch"
                 id="password"
               />
             </Grid>
@@ -106,14 +110,15 @@ const Signup: React.FC<ISignupProps> = (props) => {
             </Grid>
             <Grid item xs={12} textAlign="center" mt={2}>
               <StyledButton
-                width="25ch"
+                width="2ch"
                 text="OK"
                 buttonVariant="lotus"
                 onClick={handleClose}
+                sx={{marginLeft:'7px'}}
               />
             </Grid>
           </>
-        )}{" "}
+        )}
       </Grid>
     </ModalComponent>
   );
