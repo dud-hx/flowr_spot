@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu as MenuIcon } from "@mui/icons-material";
+import { Menu as MenuIcon, Preview } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
@@ -14,42 +14,46 @@ import {
 } from "@mui/material";
 import logo from "../../assets/media/logo.svg";
 import { routeItems } from "../../RouterConst";
-import MenuList from "./MenuList";
 import { inject, observer } from "mobx-react";
 import StateStore from "../../state/stateStore";
 import Profile from "../userComponents/Profile";
 import profileAvatar from "../../assets/media/profile.svg"
+import NavList from "./NavList";
+import NavDrawer from "./NavDrawer";
 interface INavigationProps {
   StateStore?: StateStore;
+  window?: () => Window;
 }
 const Navigation: React.FC<INavigationProps> = (props) => {
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const { window, StateStore } = props
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [openUserProfile, setopenUserProfile] = React.useState(false);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+  const handleDrawerToggle = () => {
+    setMobileOpen(prevState => !prevState);
   };
   const handleOpenUserMenu = () => {
-     setopenUserProfile((prevState) => !prevState);
-  
+    setopenUserProfile((prevState) => !prevState);
+
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-  const isLogged = props?.StateStore?.values?.isLogged;
+
+  const isLogged = StateStore?.values?.isLogged;
   const filteredArray = !isLogged
     ? routeItems.filter((item) => item.path !== "/favorites")
-    : routeItems.filter(item=> item.path !== "/login"  && item.path !== "/signup");
+    : routeItems.filter(item => item.path !== "/login" && item.path !== "/signup");
+
+  const container = window !== undefined ? () => window()!.document.body : undefined;
 
   return (
-    <AppBar position="static" className="appbar--style">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
+    <Box sx={{ display: 'flex' }}>
+      <AppBar component='nav' className="appbar__style">
+        <Toolbar  className="toolbar">
+          {/* Logo */}
           <IconButton sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}>
             <img src={logo} />
           </IconButton>
-
+          {/* Menu Icon */}
           <Box
             sx={{
               flexGrow: 0,
@@ -58,49 +62,28 @@ const Navigation: React.FC<INavigationProps> = (props) => {
             }}
             justifyContent="end"
           >
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              className="bgColor"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-              className="bgColor"
-            >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center"> Favorites</Typography>
-              </MenuItem>
-            </Menu>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+         
+            onClick={handleDrawerToggle}
+            className="bgColor"
+
+          >
+            <MenuIcon />
+          </IconButton>
           </Box>
 
           <Box
             justifyContent="end"
             className="menu"
-            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            sx={{ flexGrow: 1, display: { md: "flex" } }}
           >
             <List sx={{ display: "inline-flex" }}>
               {filteredArray.map((item: any) => (
-                <MenuList path={item.path} text={item.text} handleOpenUserMenu={handleOpenUserMenu} />
+                <NavList path={item.path} text={item.text} handleOpenUserMenu={handleOpenUserMenu} />
               ))}
             </List>
           </Box>
@@ -111,11 +94,14 @@ const Navigation: React.FC<INavigationProps> = (props) => {
               </IconButton>
             </Box>
           ) : null}
-          <Profile open={openUserProfile} handleClose={handleOpenUserMenu}/>
+          <Profile open={openUserProfile} handleClose={handleOpenUserMenu} />
         </Toolbar>
-      </Container>
-      
-    </AppBar>
+
+      </AppBar>
+      <NavDrawer container={container} mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+        filteredArray={filteredArray} handleOpenUserMenu={handleOpenUserMenu} />
+    </Box>
   );
 };
 

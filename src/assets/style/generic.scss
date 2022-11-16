@@ -1,29 +1,39 @@
 /*contains styles such as CSS reset roles, global box-sizing rules, and CSS normalising ruless*/
-
+.justify_between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .MuiAppBar-root {
-  &.appbar--style {
+  &.appbar__style {
     background-color: $white;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
 
-    .menu {
-      li {
-        color: $lightdark;
-        @include contentText();
-        text-transform: capitalize;
-        margin-right: $spacing-xs;
-        width: fit-content;
-        margin-top: 0;
-        margin-bottom: 0;
 
-        a {
-          text-decoration: none;
+  }
+}
 
-          .text__color {
-            color: $error;
-          }
-        }
-      }
+.menu {
+  li {
+    color: $lightdark;
+    @include contentText();
+    text-transform: capitalize;
+    margin-right: $spacing-xs;
+    width: fit-content;
+    margin-top: 0;
+    margin-bottom: 0;
+
+  
+    a {
+      text-decoration: none;
+      all: unset;
+      padding-left: 8px;
     }
+    
+      .text__color {
+        color: $error;
+      }
+    
   }
 }
 
@@ -37,11 +47,13 @@
   .MuiInputBase-root .MuiInput-root:hover:not(.Mui-disabled)::before {
     border: none;
   }
+
   .MuiInput-root {
     font-family: "Ubuntu";
     font-size: 14px;
     font-weight: 400;
     font-style: normal;
+
     &::after,
     &::before {
       border: none;
@@ -58,3 +70,40 @@
     }
   }
 }
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+  .appbar__style {
+    .toolbar {
+      .menu {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .appbar__style {
+    .toolbar {
+      .menu {
+        display: none;
+      }
+    }
+
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .appbar__style {
+    .toolbar {
+      .menu {
+        display: flex;
+      }
+    }
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {}

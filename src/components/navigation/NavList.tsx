@@ -10,11 +10,11 @@ export interface IItemsProps {
   path: string;
   text: string;
   StateStore?: StateStore;
-  handleOpenUserMenu:() => void
+  handleOpenUserMenu: () => void
 }
 
-const MenuList: React.FC<IItemsProps> = (props) => {
-  const { path, text, StateStore,handleOpenUserMenu} = props;
+const NavList: React.FC<IItemsProps> = (props) => {
+  const { path, text, StateStore, handleOpenUserMenu } = props;
 
   const val = StateStore?.values;
   const [openSignup, setOpenSignUp] = React.useState(false);
@@ -45,16 +45,18 @@ const MenuList: React.FC<IItemsProps> = (props) => {
         </Link>
       );
     } else {
-        return (
-          <StyledButton
-            text={text}
-            onClick={isSignupPath ? handleSignupClick : handleLogin}
-            className={isSignupPath ? "button__signup" : ""}
-            sx={{ textTransform: "capitalize", color: { isLoginPath } }}
-          />
-        )
-      }
-     
+      return (
+        <StyledButton
+          text={text}
+          onClick={isSignupPath ? handleSignupClick : handleLogin}
+          className={isSignupPath ? "button__signup" : "text__color"}
+          sx={{
+            textTransform: "capitalize"
+          }}
+        />
+      )
+    }
+
   };
   return (
     <>
@@ -67,9 +69,9 @@ const MenuList: React.FC<IItemsProps> = (props) => {
         handleClose={handleLogin}
         handleProfile={handleProfile}
       />
- 
+
     </>
   );
 };
 
-export default inject("StateStore")(observer(MenuList));
+export default inject("StateStore")(observer(NavList));
