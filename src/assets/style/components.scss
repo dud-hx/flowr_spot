@@ -1,11 +1,19 @@
 /*contains style for each component */
 //navigation
+:root {
+    --d: 700ms;
+    --e: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
 .appbar {
     .bgColor {
         background-color: $black;
     }
 
 }
+
+$bp-md: 600px;
+$bp-lg: 800px;
 
 //HomeScreen
 .home_header {
@@ -32,6 +40,116 @@
     p {
         @include smallestContentText()
     }
-
-
 }
+
+.page__content {
+    font-family: 'Montserrat';
+    padding: 2rem;
+   width: 280px;
+    height: 380px;
+    // @media (min-width: $bp-md) {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
+
+    // @media (min-width: $bp-lg) {
+    //   grid-template-columns: repeat(4, 1fr);
+    // }
+
+    .card {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        padding: 1rem;
+        min-width: 100%;
+        min-height: 100%;
+        text-align: center;
+        color: whitesmoke;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: whitesmoke;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 10%), 0 2px 2px rgb(0 0 0 / 10%), 0 4px 4px rgb(0 0 0 / 10%), 0 8px 8px rgb(0 0 0 / 10%), 0 16px 16px rgb(0 0 0 / 10%);
+background-position: center center;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            background-position: 0 0;
+            pointer-events: none;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            pointer-events: none;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+            transform: translateY(-50%);
+            transition: transform calc(var(--d) * 2) var(--e);
+        }
+        .icon {
+            position: absolute;
+            right: 3%;
+            top: 3%;
+            background-color: #fff;
+        }
+
+        .content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 1rem;
+            transition: transform var(--d) var(--e);
+            z-index: 1;
+
+       
+
+            .title {
+                font-size: 1.3rem;
+                font-weight: bold;
+                line-height: 1.2;
+                margin: 0;
+            }
+
+            .copy {
+                font-family: var(--font-serif);
+                font-size: 12px;
+                font-style: italic;
+                line-height: 12px;
+                margin: 0;
+            }
+
+            .btn {
+
+                cursor: pointer;
+                margin-top: 1.5rem;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.65rem;
+                 letter-spacing: 0.025rem;
+                text-transform: lowercase;
+                color: white;
+                border: none;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 20px;
+            }
+        }
+    }
+}
+
+// .card__icon{
+//     .MuiSvgIcon-root{
+//    color: red;
+//        position: absolute;
+//        top: -337px;
+//         left: 147px;
+//     }
+// }

@@ -1,5 +1,5 @@
 export interface flowers {
-  flowers: [
+  flowers: 
     {
       id: 0;
       name: "string";
@@ -8,7 +8,7 @@ export interface flowers {
       profile_picture: "string";
       favorite: true;
     }
-  ];
+  
   meta: {
     current_page: 0;
     prev_page: 0;

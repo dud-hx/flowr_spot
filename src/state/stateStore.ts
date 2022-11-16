@@ -17,7 +17,7 @@ class StateStore {
   }
   @observable values = {
     user: {},
-    flowers:null,
+    flowers: null,
     error: "",
     isRegistered: false,
     isLogged: false,
@@ -63,7 +63,7 @@ class StateStore {
    const query = await fetch(`${baseFlowersURL}/search?query=${val }`, requestOptions);
   if (query) {
     const res = await query.json();
-    this.values.flowers = res
+     this.values.flowers = JSON.parse(res);
   }
  
  }
