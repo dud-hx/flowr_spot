@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import { Menu as MenuIcon, Preview } from "@mui/icons-material";
+import { Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
   Box,
-  Container,
   IconButton,
   List,
-  Menu,
-  MenuItem,
   Toolbar,
-  Typography,
 } from "@mui/material";
 import logo from "../../assets/media/logo.svg";
 import { routeItems } from "../../RouterConst";
@@ -51,7 +47,7 @@ const Navigation: React.FC<INavigationProps> = (props) => {
         <Toolbar  className="toolbar">
           {/* Logo */}
           <IconButton sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}>
-            <img src={logo} />
+            <img src={logo}  alt='logo'/>
           </IconButton>
           {/* Menu Icon */}
           <Box

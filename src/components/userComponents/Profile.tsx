@@ -20,7 +20,6 @@ const Profile: React.FC<IProfileProps> = (props) => {
       StateStore?.setProfile();
     }
   }, [open]);
-  const val = StateStore?.values.user;
   const handleOnClick = () => {
     StateStore?.setLogOut();
     handleClose()
@@ -28,7 +27,7 @@ const Profile: React.FC<IProfileProps> = (props) => {
   return (
     <ModalComponent open={modalOpen} handleClose={handleClose} title="">
       <Box sx={{ paddingLeft: "90px" }}>
-        <div style={{ display: "flex", width: "100%", marginBottom: "20px" }}>
+        <div className="profile__box" >
           <Avatar
             alt="Remy Sarp"
             src={profileAvatar}

@@ -1,8 +1,5 @@
-import { flowers } from "./../models/flowerModel";
 import { userModel } from "./../models/userModel";
-import { observable, action, makeObservable, makeAutoObservable } from "mobx";
-import { Console } from "console";
-import { useFormControl } from "@mui/material";
+import { observable, action, makeAutoObservable } from "mobx";
 
 const url = "https://flowrspot-api.herokuapp.com";
 const baseUserURL = `${url}/api/v1/users`;

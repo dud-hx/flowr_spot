@@ -1,4 +1,8 @@
 /*contains styles such as CSS reset roles, global box-sizing rules, and CSS normalising ruless*/
+body{
+  font-family: "Montserrat";
+}
+
 .justify_between{
   display: flex;
   justify-content: space-between;

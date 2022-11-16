@@ -1,13 +1,7 @@
-import { Favorite, Star, StarBorderTwoTone, Stars } from "@mui/icons-material";
+import { Star } from "@mui/icons-material";
 import {
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  CardMedia,
   Grid,
   IconButton,
-  Typography,
 } from "@mui/material";
 import { inject, observer } from "mobx-react";
 import StateStore from "../../state/stateStore";

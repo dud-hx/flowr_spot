@@ -20,7 +20,7 @@ $bp-lg: 800px;
     width: 100%;
     height: 50vh;
     min-height: 500px;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1435224668334-0f82ec57b605?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../media/template.jpg');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -144,12 +144,8 @@ background-position: center center;
         }
     }
 }
-
-// .card__icon{
-//     .MuiSvgIcon-root{
-//    color: red;
-//        position: absolute;
-//        top: -337px;
-//         left: 147px;
-//     }
-// }
+.profile_box{
+    display: "flex";
+    width: 100%;
+     margin-bottom: 20px 
+}

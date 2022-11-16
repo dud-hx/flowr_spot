@@ -1,5 +1,4 @@
-import { Visibility, VisibilityOff } from '@mui/icons-material'
-import { FilledInput, FormControl, IconButton, InputAdornment, InputLabel } from '@mui/material'
+import { FilledInput, FormControl, InputLabel } from '@mui/material'
 
 interface IInputFieldProps {
   label: string;

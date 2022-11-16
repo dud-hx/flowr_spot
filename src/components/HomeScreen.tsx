@@ -13,8 +13,7 @@ const HomeScreen: React.FC<IHomeProps> = props => {
   useEffect(() => {
     StateStore?.getFlowerData();
   }, [])
-  const store = StateStore?.values
-
+ 
   return (
     <>
       <div className="home_header">

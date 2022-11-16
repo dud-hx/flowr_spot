@@ -1,11 +1,8 @@
 import * as React from "react";
-import TextField from "@mui/material/TextField";
-import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import {
     FormControl,
     IconButton,
     InputAdornment,
-    InputLabel,
     OutlinedInput,
 } from "@mui/material";
 import { Search } from "@mui/icons-material";

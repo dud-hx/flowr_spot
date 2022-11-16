@@ -25,14 +25,13 @@ const NavDrawer: React.FC<INavDrawerProps> = (props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} justifyContent="end" className="menu">
-        <div className="justify_between"> 
-      <IconButton sx={{ display: { xs: "flex" }, mr: 1 }}>
-        <img src={logo} />
-        
-      </IconButton>
-      <IconButton>
-      <Close />
-      </IconButton>
+      <div className="justify_between">
+        <IconButton sx={{ display: { xs: "flex" }, mr: 1 }}>
+          <img src={logo} alt="logo" />
+        </IconButton>
+        <IconButton>
+          <Close />
+        </IconButton>
       </div>
       <List sx={{ display: "block" }}>
         {filteredArray.map((item: any) => (
@@ -49,8 +48,8 @@ const NavDrawer: React.FC<INavDrawerProps> = (props) => {
   return (
     <Box component="nav">
       <Drawer
-      anchor="right"
-            container={container}
+        anchor="right"
+        container={container}
         variant="temporary"
         open={mobileOpen}
         onClose={handleDrawerToggle}
