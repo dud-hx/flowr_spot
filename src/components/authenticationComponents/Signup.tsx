@@ -5,10 +5,10 @@ import ModalComponent from "../../shared/ModalComponent";
 import StyledButton from "../../shared/StyledButton";
 import StateStore from "../../state/stateStore";
 import { userModel } from "../../models/userModel";
-import { AnyAaaaRecord } from "dns";
+ 
 import { inject, observer } from "mobx-react";
-import { ContactSupport } from "@mui/icons-material";
-interface ISignupProps {
+
+export interface ISignupProps {
   StateStore?: StateStore;
   open?: boolean;
   handleClose?: () => void;
@@ -29,14 +29,14 @@ const Signup: React.FC<ISignupProps> = (props) => {
   };
 
   const modalOpen = open ? open : false;
-  const isRegistered = StateStore?.values.isRegistered;
+  const isRegistered = StateStore?.values?.isRegistered;
   return (
     <ModalComponent
       title={isRegistered ? "" : "Create an Account"}
       open={modalOpen}
       handleClose={handleClose!}
     >
-      <Grid container justifyContent="center" alignItems="center">
+      <Grid  id='signup' container justifyContent="center" alignItems="center">
         {" "}
         {!isRegistered ? (
           <>
@@ -47,7 +47,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 value={userAccount?.first_name!}
                 handleChange={handleChange}
                 id="first_name"
-                width="24ch"
+                width="11rem"
 
               />{" "}
             </Grid>
@@ -58,7 +58,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 value={userAccount?.last_name!}
                 handleChange={handleChange}
                 id="last_name"
-                width="24ch"
+                width="11rem"
               />
             </Grid>
             <Grid item xs={12}>

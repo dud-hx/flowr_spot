@@ -12,7 +12,7 @@ interface ISearchProps {
     StateStore?: StateStore;
 }
 const SearchFlowers: React.FC<ISearchProps> = props => {
-    const [value, setValue] = React.useState<any | null>(null);
+    const [value, setValue] = React.useState<any | null>('');
     const handleOnSearch = () => {
         if (value) {
             props.StateStore?.searchFlower(value)

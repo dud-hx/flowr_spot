@@ -47,7 +47,7 @@ const Navigation: React.FC<INavigationProps> = (props) => {
         <Toolbar  className="toolbar">
           {/* Logo */}
           <IconButton sx={{ display: { xs: "flex", md: "flex" }, mr: 1 }}>
-            <img src={logo}  alt='logo'/>
+            <img src={logo} data-testid='logo-id' alt='logo'/>
           </IconButton>
           {/* Menu Icon */}
           <Box
@@ -78,8 +78,8 @@ const Navigation: React.FC<INavigationProps> = (props) => {
             sx={{ flexGrow: 1, display: { md: "flex" } }}
           >
             <List sx={{ display: "inline-flex" }}>
-              {filteredArray.map((item: any) => (
-                <NavList path={item.path} text={item.text} handleOpenUserMenu={handleOpenUserMenu} />
+              {filteredArray.map((item: any, index:any) => (
+                <NavList key={index} path={item.path} text={item.text} handleOpenUserMenu={handleOpenUserMenu} />
               ))}
             </List>
           </Box>

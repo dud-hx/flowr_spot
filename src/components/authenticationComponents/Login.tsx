@@ -45,7 +45,7 @@ const Login: React.FC<ILoginProps> = props => {
                 value={user?.email!}
                 handleChange={handleChange}
                  id="email"
-                 width="49ch"
+                 width="24rem"
               />
             </Grid>
             <Grid item xs={12}>
@@ -55,7 +55,7 @@ const Login: React.FC<ILoginProps> = props => {
                 type="password"
                 value={user?.password!}
                 handleChange={handleChange} 
-                width="49ch"
+                width="24rem"
                />
             </Grid>
             <Grid item xs={12}  >

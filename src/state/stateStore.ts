@@ -53,6 +53,7 @@ class StateStore {
       const res = await query.json();
       this.values.flowers = res;
     }
+    return this.values.flowers;
   }
 
   async searchFlower(val: string) {
@@ -71,7 +72,6 @@ class StateStore {
   }
 
   async fetchProfile() {
-    console.log("Fetching profile...");
     const requestOptions = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -94,6 +94,10 @@ class StateStore {
   @action setLogOut() {
     this.values.isLogged = false;
     sessionStorage.clear();
+  }
+  @action fetchFlowerData(){
+    this.getFlowerData();
+return this.values.flowers;
   }
 }
 

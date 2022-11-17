@@ -12,17 +12,15 @@ interface IPropsFlowerList {
 const FlowerList: React.FC<IPropsFlowerList | any> = (props) => {
   const { StateStore } = props;
 
-  console.log(typeof props.StateStore?.values.flowers, "test");
-
-  const arrayFlowers = StateStore.values.flowers
-    ? StateStore.values.flowers
+  const arrayFlowers = StateStore?.values?.flowers
+    ? StateStore?.values?.flowers
     : {};
 
   return (
     <Grid container spacing={3} sx={{ marginTop: "20px" }}>
-      {StateStore.values.flowers ? (
-        arrayFlowers.flowers.map((item: flowers | any) => (
-          <Grid className="page__content" item md={3} sm={4} xs={12} >
+      {StateStore?.values?.flowers ? (
+        arrayFlowers.flowers.map((item: flowers | any, index: any) => (
+          <Grid className="page__content"  key={`${index}${item.name}`} item md={3} sm={4} xs={12} >
 
 
             <div className="card" style={{ backgroundImage: `url(${item.profile_picture})` }}>

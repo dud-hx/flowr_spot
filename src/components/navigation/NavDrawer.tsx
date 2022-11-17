@@ -21,7 +21,6 @@ const NavDrawer: React.FC<INavDrawerProps> = (props) => {
     filteredArray,
     handleOpenUserMenu,
   } = props;
-  console.log(container, "teas");
 
   const drawer = (
     <Box onClick={handleDrawerToggle} justifyContent="end" className="menu">
@@ -34,8 +33,9 @@ const NavDrawer: React.FC<INavDrawerProps> = (props) => {
         </IconButton>
       </div>
       <List sx={{ display: "block" }}>
-        {filteredArray.map((item: any) => (
+        {filteredArray.map((item: any, index:any) => (
           <NavList
+          key={index}
             path={item.path}
             text={item.text}
             handleOpenUserMenu={handleOpenUserMenu}

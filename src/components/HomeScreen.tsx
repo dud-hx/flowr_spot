@@ -1,5 +1,3 @@
-import { Grid } from '@mui/material'
-import { flexbox } from '@mui/system'
 import { inject, observer } from 'mobx-react'
 import React, { useEffect } from 'react'
 import StateStore from '../state/stateStore'
@@ -11,7 +9,7 @@ import SearchFlowers from '../components/flowerComponents/SearchFlowers'
 const HomeScreen: React.FC<IHomeProps> = props => {
   const { StateStore } = props
   useEffect(() => {
-    StateStore?.getFlowerData();
+    StateStore?.fetchFlowerData();
   }, [])
  
   return (
