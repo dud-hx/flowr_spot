@@ -1,14 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'mobx-react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import App from '../App';
-import Signup from '../components/authenticationComponents/Signup'
-import ISignupProps from '../components/authenticationComponents/Signup';
 import HomeScreen from '../components/HomeScreen';
 import StateStore from '../state/stateStore';
-import { log } from 'console'
 
-describe("<App />", () => {
+ describe("<App />", () => {
   test("Should contain a logo with  name logo.svg", async () => {
     render(<BrowserRouter >
       <App /></BrowserRouter>)
@@ -17,3 +14,11 @@ describe("<App />", () => {
 
   });
 });
+
+const ReactTestRenderer = require('react-test-renderer');
+
+it('renders correctly', () => {
+  const tree = ReactTestRenderer.create(<Provider StateStore={StateStore}><HomeScreen /></Provider>)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+})
