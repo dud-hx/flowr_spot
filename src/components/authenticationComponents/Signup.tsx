@@ -104,8 +104,8 @@ const Signup: React.FC<ISignupProps> = (props) => {
           <>
             <Grid item xs={12} >
               <Alert variant="outlined" severity="success">
-                Congrats! You are successfully registered
-              </Alert>{" "}
+              Congratulations! You have successfully signed up for FlowrSpot!
+              </Alert>
             </Grid>
             <Grid item xs={12} textAlign="center" mt={2}>
               <StyledButton

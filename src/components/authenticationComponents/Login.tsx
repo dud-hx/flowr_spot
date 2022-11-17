@@ -44,8 +44,8 @@ const Login: React.FC<ILoginProps> = props => {
                 type="text"
                 value={user?.email!}
                 handleChange={handleChange}
-                 id="email"
-                 width="24rem"
+                id="email"
+                width="24rem"
               />
             </Grid>
             <Grid item xs={12}>
@@ -54,9 +54,9 @@ const Login: React.FC<ILoginProps> = props => {
                 label="Password"
                 type="password"
                 value={user?.password!}
-                handleChange={handleChange} 
+                handleChange={handleChange}
                 width="24rem"
-               />
+              />
             </Grid>
             <Grid item xs={12}  >
               <StyledButton
@@ -71,8 +71,8 @@ const Login: React.FC<ILoginProps> = props => {
           <>
             <Grid item xs={12} >
               <Alert variant="outlined" severity="success">
-                Congrats! You are successfully logged
-              </Alert>{" "}
+                “Congratulations! You have successfully logged into FlowrSpot.
+              </Alert>
             </Grid>
             <Grid item xs={12} textAlign="center" mt={2} >
               <StyledButton
