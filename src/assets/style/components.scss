@@ -45,15 +45,8 @@ $bp-lg: 800px;
 .page__content {
     font-family: 'Montserrat';
     padding: 2rem;
-   width: 280px;
+    width: 280px;
     height: 380px;
-    // @media (min-width: $bp-md) {
-    //   grid-template-columns: repeat(2, 1fr);
-    // }
-
-    // @media (min-width: $bp-lg) {
-    //   grid-template-columns: repeat(4, 1fr);
-    // }
 
     .card {
         position: relative;
@@ -69,7 +62,8 @@ $bp-lg: 800px;
         background-repeat: no-repeat;
         background-color: whitesmoke;
         box-shadow: 0 1px 1px rgb(0 0 0 / 10%), 0 2px 2px rgb(0 0 0 / 10%), 0 4px 4px rgb(0 0 0 / 10%), 0 8px 8px rgb(0 0 0 / 10%), 0 16px 16px rgb(0 0 0 / 10%);
-background-position: center center;
+        background-position: center center;
+
         &:before {
             content: "";
             position: absolute;
@@ -94,6 +88,7 @@ background-position: center center;
             transform: translateY(-50%);
             transition: transform calc(var(--d) * 2) var(--e);
         }
+
         .icon {
             position: absolute;
             right: 3%;
@@ -110,8 +105,6 @@ background-position: center center;
             padding: 1rem;
             transition: transform var(--d) var(--e);
             z-index: 1;
-
-       
 
             .title {
                 font-size: 1.3rem;
@@ -134,7 +127,7 @@ background-position: center center;
                 margin-top: 1.5rem;
                 padding: 0.75rem 1.5rem;
                 font-size: 0.65rem;
-                 letter-spacing: 0.025rem;
+                letter-spacing: 0.025rem;
                 text-transform: lowercase;
                 color: white;
                 border: none;
@@ -144,8 +137,9 @@ background-position: center center;
         }
     }
 }
-.profile_box{
+
+.profile_box {
     display: "flex";
     width: 100%;
-     margin-bottom: 20px 
+    margin-bottom: 20px
 }

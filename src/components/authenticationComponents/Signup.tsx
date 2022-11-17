@@ -48,8 +48,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 handleChange={handleChange}
                 id="first_name"
                 width="11rem"
-
-              />{" "}
+              />
             </Grid>
             <Grid item xs={6}>
               <InputField

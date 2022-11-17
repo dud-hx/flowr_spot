@@ -91,9 +91,7 @@ const Login: React.FC<ILoginProps> = props => {
 
               />
             </Grid>
-
           </>
-
         }
       </Grid>
     </ModalComponent>

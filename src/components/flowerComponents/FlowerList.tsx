@@ -21,13 +21,10 @@ const FlowerList: React.FC<IPropsFlowerList | any> = (props) => {
       {StateStore?.values?.flowers ? (
         arrayFlowers.flowers.map((item: flowers | any, index: any) => (
           <Grid className="page__content"  key={`${index}${item.name}`} item md={3} sm={4} xs={12} >
-
-
             <div className="card" style={{ backgroundImage: `url(${item.profile_picture})` }}>
              {StateStore?.values.isLogged ? <IconButton className="icon">
                 <Star sx={{color:"#D4D8D9"}} />
-              </IconButton>: null
-}
+              </IconButton>: null}
               <div className="content">
                 <h2 className="title">{item.name}</h2>
                 <p className="copy">{item.latin_name}</p>

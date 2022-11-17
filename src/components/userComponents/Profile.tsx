@@ -94,7 +94,7 @@ const Profile: React.FC<IProfileProps> = (props) => {
           />
 
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="justify_center">
           <StyledButton
             text="Logout"
             buttonVariant="lotus"
