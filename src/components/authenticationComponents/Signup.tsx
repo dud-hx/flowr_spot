@@ -66,8 +66,8 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 type="date"
                 value={userAccount?.date_of_birth!}
                 handleChange={handleChange}
-                width="49ch"
                 id="date_of_birth"
+                width="24rem"
                 
                />
             </Grid>
@@ -77,7 +77,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 type="text"
                 value={userAccount?.email!}
                 handleChange={handleChange}
-                width="49ch"
+                width="24rem"
                 id="email"
               />
             </Grid>
@@ -87,7 +87,7 @@ const Signup: React.FC<ISignupProps> = (props) => {
                 type="password"
                 value={userAccount?.password!}
                 handleChange={handleChange}
-                width="49ch"
+                width="24rem"
                 id="password"
               />
             </Grid>
